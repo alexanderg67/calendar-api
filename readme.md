@@ -8,4 +8,4 @@ JWT_SECRET=ggg  \
 PORT=5000 \
 Endpoints URL: \
 http://hostname:port/api/v1/users \
-http://hostname:port/api/v1/events  \
+http://hostname:port/api/v1/events
