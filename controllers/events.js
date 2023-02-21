@@ -2,6 +2,7 @@
 const eventModel= require('../models/Event')
 const getAllEvents =async (req,res) => {
    //get user with maximum id to know last id
+   try {
     let lastDocument={}
       lastDocument= await eventModel.findOne({ },  {_id:0, __v:0}).sort('-id')
      if (!lastDocument) {
@@ -9,8 +10,10 @@ const getAllEvents =async (req,res) => {
      lastDocument.id=1
      }
      const tasks= await eventModel.find({username: req.username},  {_id:0, __v:0})
-    res.json({data:tasks,lastid: lastDocument.id })
-     
+    res.status(200).json({data:tasks,lastid: lastDocument.id })
+    }catch(err) {
+    res.status(500).json({msg: 'request failed'})
+    }  
 } 
 
 

@@ -1,10 +1,13 @@
 const userModel = require('../models/user')
 const bcrypt=require('bcryptjs')
 const getUsers =async (req,res) => {
+    try {
     const users= await userModel.find({ },  {_id:0, __v:0, hash:0})
-   
     res.json({data: users})
-    }
+    }catch(err) {
+    res.status(500).json({msg: 'request failed'})
+    } 
+}
 
   const createUser =async (req,res) => {
     const {username,password}=req.body;
@@ -24,6 +27,8 @@ const getUsers =async (req,res) => {
 }
 const deleteUser =async (req,res) => {
     const username= req.params.user;
+    if( username==='superadmin')
+    return res.status(200).json({msg: `superadmin can not be deleted`})
     try {
     const user=await userModel.findOneAndDelete({ username:username}) 
     if(!user) {
