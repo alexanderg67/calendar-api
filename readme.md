@@ -1,6 +1,6 @@
 Description: \
-API for aplication react-calendar. \ 
-Open .env file and type MONGO_URI, JWT_SECRET and PORT( for api) \
+API for aplication react-calendar. <br /> 
+Open .env file and type MONGO_URI, JWT_SECRET and PORT( for api) <br /> 
 
 Example: \
 MONGO_URI=mongodb://localhost/EVENTS \
